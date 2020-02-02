@@ -22,12 +22,14 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
+    <!--blue circle-->
     <com.example.android.mygarden.ui.WaterLevelView
         android:id="@+id/water_level"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:radius="50dp"
         app:value="100" />
+    <!--radius is how big, value is how much percent of circle circumference is boldly coloured -->
 
     <TextView
         android:id="@+id/last_watered_number"
