@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--describes widget metadata, in xml folder-->
+<!-- TODO (1): Create a plant_widget_info.xml file and set updatePeriodMillis to 30 minutes -->
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:initialLayout="@layout/plant_widget_provider"
+    android:minWidth="40dp"
+    android:minHeight="40dp"
+    android:previewImage="@drawable/launcher_icon"
+    android:resizeMode="horizontal|vertical"
+    android:updatePeriodMillis="1800000"
+    android:widgetCategory="home_screen" />
+    <!--minHeight and minWidth: Every 60dp means 1 cell in android home-screen-->
+    <!--previewImage: Sets icon on android’s widget select screen (menu, when you are going to drag it into home screen). We can not draw a layout for preview. We have to set an image.-->
+    <!--resizeMode: The configuration for resizing the widget.-->
+    <!--updatePeriodMillis = specifies interval in ms in which widget updates itself, shortest interval allowed is 30minutes to prevent battery drainage-->
+    <!--widgetCategory: home_screen or keyguard (=lockscreen)-->
