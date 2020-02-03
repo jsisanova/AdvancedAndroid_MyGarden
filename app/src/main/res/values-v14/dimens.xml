@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--To prevent newer Android versions (API levels from 14 onwards) from using this margin (since they already include a built in margin)-->
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="widget_margin">0dp</dimen>
+</resources>

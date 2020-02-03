@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--Now when the XML layout refers to this dimension value using its name, a value of zero will be used on devices running API 14 plus and a value of 8dp will be used otherwise.-->
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="widget_margin">8dp</dimen>
 </resources>
