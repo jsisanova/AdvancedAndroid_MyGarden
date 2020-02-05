@@ -46,6 +46,7 @@ public class PlantWidgetProvider extends AppWidgetProvider {
         PlantWateringService.startActionUpdatePlantWidgets(context);
     }
 
+
     /**
      * Updates ALL widget instances given the widget Ids and display information
      *
@@ -96,6 +97,7 @@ public class PlantWidgetProvider extends AppWidgetProvider {
         else views.setViewVisibility(R.id.widget_water_button, View.INVISIBLE);
         // Widgets allow click handlers to only launch pending intents
         views.setOnClickPendingIntent(R.id.widget_plant_image, pendingIntent);
+
         // Add the wateringservice click handler
         Intent wateringIntent = new Intent(context, PlantWateringService.class);
         wateringIntent.setAction(PlantWateringService.ACTION_WATER_PLANT);
@@ -114,7 +116,21 @@ public class PlantWidgetProvider extends AppWidgetProvider {
      * @return The RemoteViews for the GridView mode widget
      */
     private static RemoteViews getGardenGridRemoteView(Context context) {
-       return  null;
+        // Create RemoteViews object with GridView layout, that will connect it to RemoteViewsService, that will bind RemoteViews with adapter's cursor data
+        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_grid_view);
+        // Set the GridWidgetService intent to act as the adapter for the GridView
+        Intent intent = new Intent(context, GridWidgetService.class);
+        views.setRemoteAdapter(R.id.widget_grid_view, intent);
+
+        // Set the PlantDetailActivity intent to launch when clicked
+        // SetPendingIntentTemplate for collection view (specifies intent, that all the items in collection launch when clicked)
+        Intent appIntent = new Intent(context, PlantDetailActivity.class);
+        PendingIntent appPendingIntent = PendingIntent.getActivity(context, 0, appIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        views.setPendingIntentTemplate(R.id.widget_grid_view, appPendingIntent);
+
+        // Handle empty gardens
+        views.setEmptyView(R.id.widget_grid_view, R.id.empty_view);
+        return views;
     }
 
     // TODO To trigger update after widget size has changed (any widget option has changed)
